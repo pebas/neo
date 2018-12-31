@@ -4,4 +4,3 @@ gulp.task('regards', function () {
   console.log('Hello World!');
 });
 
-aaaaa
