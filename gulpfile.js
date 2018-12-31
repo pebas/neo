@@ -1,4 +1,6 @@
 var gulp = require('gulp');
-gulp.task('predrag', function () {
+var sass = require('sass');
+gulp.task('regards', function () {
   console.log('Hello World!');
 });
+
