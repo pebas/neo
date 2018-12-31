@@ -13,21 +13,30 @@ var browserSync = require('browser-sync').create();
 // useref plugin
 var useref = require('gulp-useref');
 
-// Define BrowserSync Task
-gulp.task('browserSync', function() {
-    browserSync.init({
-      server: {
-        baseDir: 'app'
-      },
-    });
-  });
+// gulp if
+var uglify = require('gulp-uglify');
 
-  // USerref
-  gulp.task('useref', function(){
+// gulp if
+var gulpIf = require('gulp-if');
+
+// Define BrowserSync Task
+gulp.task('browserSync', function () {
+    browserSync.init({
+        server: {
+            baseDir: 'app'
+        },
+
+    });
+});
+
+// USerref
+gulp.task('useref', function () {
     return gulp.src('app/*.html')
-      .pipe(useref())
-      .pipe(gulp.dest('dist'))
-  });
+        .pipe(useref())
+        // Minifies only if it's a JavaScript file
+        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulp.dest('dist'))
+});
 // Styles
 gulp.task('styles', function () {
     return gulp.src('dist/scss/**/*.scss')
@@ -40,7 +49,7 @@ gulp.task('styles', function () {
 });
 
 // Watch
-gulp.task('watch', gulp.parallel( 'browserSync', 'styles', function (done) {
+gulp.task('watch', gulp.parallel('browserSync', 'styles', function (done) {
     gulp.watch('dist/scss/**/*.scss', gulp.series('styles'));
     done();
 }));
