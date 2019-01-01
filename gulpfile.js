@@ -11,13 +11,13 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
 // useref plugin
-var useref = require('gulp-useref');
+// var useref = require('gulp-useref');
 
 // gulp if
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 
 // gulp if
-var gulpIf = require('gulp-if');
+// var gulpIf = require('gulp-if');
 
 // Define BrowserSync Task
 gulp.task('browserSync', function () {
@@ -32,10 +32,10 @@ gulp.task('browserSync', function () {
 // USerref
 gulp.task('useref', function () {
     return gulp.src('app/*.html')
-        .pipe(useref())
+       //  .pipe(useref())
         // Minifies only if it's a JavaScript file
-        .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulp.dest('dist'))
+        // .pipe(gulpIf('*.js', uglify()))
+       //  .pipe(gulp.dest('dist'))
 });
 // Styles
 gulp.task('styles', function () {
@@ -50,6 +50,12 @@ gulp.task('styles', function () {
 
 // Watch
 gulp.task('watch', gulp.parallel('browserSync', 'styles', function (done) {
-    gulp.watch('dist/scss/**/*.scss', gulp.series('styles'));
-    done();
+    gulp.watch('dist/scss/**/*.scss');
 }));
+function reload(done) {
+    browserSync.reload();
+    done();
+  }
+  
+  gulp.watch(['app/**/*.js'], gulp.series(reload));
+
