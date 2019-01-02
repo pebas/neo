@@ -1,28 +1,26 @@
-var ime = ["Slobodno!", "Dvojka!", "Trojka!", "A kako promasujes!!!"]
+var imenaZaPoene = ["Slobodno!", "Dvojka!", "Trojka!", "A kako promasujes!!!"]
 
 function kosarkaskiPoeni(poen) {
-    var answer = ime;
+    var vratiIme = imenaZaPoene;
     switch (poen) {
         case 1: 1;
-            answer = ime[0];
+            vratiIme = imenaZaPoene[0];
             break;
         case 2: 2;
-            answer = ime[1];
+            vratiIme = imenaZaPoene[1];
             break;
         case 3: 3;
-            answer = ime[2];
+            vratiIme = imenaZaPoene[2];
             break;
         default:
-            answer = ime[3];
+            vratiIme = imenaZaPoene[3];
             break;
     }
-    return answer;
-
+    return vratiIme;
 }
 
-console.log(kosarkaskiPoeni(2));
+console.log(kosarkaskiPoeni(1));
 
-/*
 function caseInSwitch(val) {
     var answer = "";
     switch (val) {
@@ -46,4 +44,3 @@ function caseInSwitch(val) {
 }
 
 console.log(caseInSwitch("Bob"));
-*/
