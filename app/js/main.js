@@ -1,23 +1,14 @@
-function countPositivesSumNegatives(input) {
-    let countPositive = 0;
-    let sumNegative = 0;
-    if(input && input.length > 0) {
-        for (let i = 0; i < input.length; i++) {
-            if (input[i] > 0) {
-                countPositive++;
-            } else if (input[i] < 0) {
-                sumNegative += input[i];
-            }
+"use strict"
 
-        }
-        return [countPositive, sumNegative];
-    }
-    return [];
-
+function howMuchILoveYou(nbPetals) {
+    let phrase = ["not at all", "I love you", "a little", "a lot", "passionately", "madly"]
+    return phrase;
 }
 
 
 
-console.log(countPositivesSumNegatives([]));
 
+console.log(howMuchILoveYou(7)); // "I love you")
+console.log(howMuchILoveYou(3)); // "a lot")
+console.log(howMuchILoveYou(6)); // "not at all")
 
